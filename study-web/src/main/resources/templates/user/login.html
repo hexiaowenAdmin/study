@@ -1,0 +1,21 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+      xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+	<title></title>
+	<meta name="keywords" content="" />
+	<meta name="description" content="" />
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+	<form th:action="${basePath}" method="post">
+		用户名:<input type="text" name="username">
+		密码:<input type="password" name="password">
+		<input type="hidden" name="rememberMe" value="false"/>
+		<input type="submit" value="提交">
+	</form>
+	
+</body>
+</html>

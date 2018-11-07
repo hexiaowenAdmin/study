@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.study</groupId>
+  <artifactId>study</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <name>study-parent</name>
+  <description>com.study</description>
+  <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>1.5.3.RELEASE</version>
+        <relativePath/>
+   </parent>
+   <dependencyManagement>
+	    <dependencies>
+	        <dependency>
+	            <groupId>org.springframework.cloud</groupId>
+	            <artifactId>spring-cloud-dependencies</artifactId>
+	            <version>Camden.SR7</version>
+	            <type>pom</type>
+	            <scope>import</scope>
+	        </dependency>
+	    </dependencies>
+	</dependencyManagement>
+   <properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<shiro.version>1.3.0</shiro.version>
+	</properties>
+	
+	<dependencies>
+	
+		<!-- 服务发现组件-->
+       	<dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-eureka-server</artifactId>
+        </dependency>
+          <!-- 应用监控-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <!-- 客户端负载 -->
+         <dependency>
+	        <groupId>org.springframework.cloud</groupId>
+	        <artifactId>spring-cloud-starter-ribbon</artifactId>
+	    </dependency>
+	    
+	     <!-- 加入断路器依赖 -->  
+        <dependency>  
+            <groupId>org.springframework.cloud</groupId>  
+            <artifactId>spring-cloud-starter-hystrix</artifactId>  
+        </dependency>  
+	    
+		<!-- 引入spring boot依赖 -->
+		<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <exclusions>
+			  <!-- 排除logback的使用-->
+		      <exclusion>
+		         <groupId>org.springframework.boot</groupId>
+		         <artifactId>spring-boot-starter-logging</artifactId>
+		      </exclusion>
+		   </exclusions>
+        </dependency>
+        
+        <!-- springboot整合 redis -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-redis</artifactId>
+		</dependency>
+		<dependency>  
+	      	<groupId>org.springframework.boot</groupId>  
+	      	<artifactId>spring-boot-starter-redis</artifactId>  
+	  	  	<version>1.2.2.RELEASE</version>
+	    </dependency>
+	      <!--spring session 与redis应用基本环境配置,需要开启redis后才可以使用，不然启动Spring boot会报错 -->
+       <!--  <dependency>
+            <groupId>org.springframework.session</groupId>
+            <artifactId>spring-session-data-redis</artifactId>
+        </dependency> -->
+        <dependency>
+            <groupId>org.crazycake</groupId>
+            <artifactId>shiro-redis</artifactId>
+            <version>2.4.2.1-RELEASE</version>
+        </dependency>
+        
+		 <!-- 添加对freemarker的支持-->
+		 <dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-freemarker</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-aop</artifactId>
+		</dependency>
+		
+		<dependency>  
+            <groupId>org.springframework.boot</groupId>  
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>  
+        </dependency>  
+		<!-- 添加对mybatis的支持-->
+		<dependency>
+		    <groupId>org.mybatis.spring.boot</groupId>
+		    <artifactId>mybatis-spring-boot-starter</artifactId>
+		    <version>1.1.1</version>
+		    <exclusions>  
+		       <exclusion>  
+		          <groupId>org.apache.tomcat</groupId>  
+		          <artifactId>tomcat-jdbc</artifactId>  
+		       </exclusion>  
+		    </exclusions>  
+		</dependency>
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-jdbc</artifactId>
+		</dependency>
+		<!-- mybatis工具-->
+	    <dependency>
+	      	<groupId>tk.mybatis</groupId>
+	      	<artifactId>mapper-spring-boot-starter</artifactId>
+	      	<version>1.1.4</version>
+		</dependency>
+		<!-- springboot log4j支持 -->
+        <dependency> 
+           <groupId>org.springframework.boot</groupId>
+           <artifactId>spring-boot-starter-log4j</artifactId>
+           <version>1.3.8.RELEASE</version>
+        </dependency>
+        <!-- mysql -->
+	    <dependency>
+	      	<groupId>mysql</groupId>
+	      	<artifactId>mysql-connector-java</artifactId>
+		</dependency>
+		<!-- alibaba数据库连接池 -->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>druid</artifactId>
+			<version>1.0.20</version>
+		</dependency>
+		<!-- httpClient公共 -->
+		<dependency>
+			<groupId>commons-httpclient</groupId>
+			<artifactId>commons-httpclient</artifactId>
+			<version>3.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+		</dependency>
+		<!-- javamail api -->
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>javax.mail-api</artifactId>
+			<version>1.5.1</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>mail</artifactId>
+			<version>1.4.2</version>
+		</dependency>
+		<!-- fastJson -->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>1.1.24</version>
+		</dependency>
+		<!-- json -->
+		<dependency>
+			<groupId>net.sf.json-lib</groupId>
+			<artifactId>json-lib</artifactId>
+			<version>2.4</version>
+		</dependency>
+		<!-- jxl -->
+		<dependency>
+			<groupId>net.sourceforge.jexcelapi</groupId>
+			<artifactId>jxl</artifactId>
+			<version>2.6.12</version>
+		</dependency>
+		<!-- poi -->
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>3.9</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml</artifactId>
+			<version>3.9</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml-schemas</artifactId>
+			<version>3.9</version>
+		</dependency>
+		<!-- 上传下载的jar-->
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>1.2.2</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.2</version>
+		</dependency>
+		<!--Apache Shiro-->
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-core</artifactId>
+			<version>${shiro.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-ehcache</artifactId>
+			<version>${shiro.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-web</artifactId>
+			<version>${shiro.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-quartz</artifactId>
+			<version>${shiro.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-spring</artifactId>
+			<version>${shiro.version}</version>
+		</dependency>
+		<!-- thymeleaf -->
+		<dependency>  
+            <groupId>com.github.theborakompanioni</groupId>  
+            <artifactId>thymeleaf-extras-shiro</artifactId>  
+            <version>1.2.1</version>  
+        </dependency>
+         <dependency>  
+            <groupId>net.sourceforge.nekohtml</groupId>  
+            <artifactId>nekohtml</artifactId>  
+            <version>1.9.22</version>  
+        </dependency>    
+	</dependencies>
+   
+  	<build>
+		<finalName>study-parent</finalName>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>  
+                <configuration>  
+                    <source>1.7</source>  
+                    <target>1.7</target>  
+                    <encoding>UTF-8</encoding>  
+                    <compilerArguments>  
+                        <verbose/>  
+                    </compilerArguments>  
+                </configuration>
+            </plugin>
+		</plugins>
+	</build>
+  <modules>
+    <module>study-web</module>
+    <module>study-service</module>
+    <module>study-service-impl</module>
+    <module>study-common</module>
+    <module>study-dao</module>
+    <module>studu-cloud-eureka-server</module>
+    <module>studu-test1</module>
+    <module>studu-test2</module>
+    <module>studu-test-ribbon</module>
+    <module>study-cloud-zuul</module>
+    <module>study-cloud-eureka-server2</module>
+  </modules>
+</project>
